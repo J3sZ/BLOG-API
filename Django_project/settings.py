@@ -43,6 +43,12 @@ INSTALLED_APPS = [
     #3rd party
     'rest_framework',
     'rest_framework.authtoken',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'corsheaders',
 ]
 
 
@@ -64,6 +70,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
+]
+
+CORS_ORIGIN_WHITELIST = [
+    "https://localhost:3000",
+    "https://localhost:8000",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://localhost:3000",
 ]
 
 ROOT_URLCONF = 'Django_project.urls'
@@ -79,6 +95,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
+                
             ],
         },
     },
